@@ -147,7 +147,8 @@ namespace COMP2084BeerStore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> {
+        public async Task<IActionResult> SalesReport()
+        {
 
         }
 
