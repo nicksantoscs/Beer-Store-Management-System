@@ -1,0 +1,11 @@
+﻿<h1>Payment</h1>
+
+<h4>Order Total: @String.Format("{0:c}", ViewBag.Total/100)</h4>
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="@ViewBag.PublishableKey"
+        data-amount="@ViewBag.Total"
+        data-name="COMP2084 Beer Store"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="cad"></script>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<COMP2084BeerStore.Models.Product>
+
+<h1>Feel free to browse our store for some delicious beer</h1>
+
+@if (ViewBag.Category != null)
+{
+    <h2>@ViewBag.category</h2>
+}
+
+<section class="row card-group">
+    @foreach (var p in Model)
+    {
+        <!--css from https://stackoverflow.com/questions/36430816/bootstrap-4-card-deck-with-number-of-columns-based-on-viewport?noredirect=1&lq=1-->
+        <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="card mb-4 text-center h-100">
+                <div class="card-body">
+                    <h5>
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id">@p.ProductName</a>
+                    </h5>
+                    <img src="~/img/product-uploads/@p.Photo" alt="Product Photo" class="thumb" />
+                    <h6>
+                        @String.Format("{0:c}", p.Price)
+                    </h6>
+                    <p>@p.Volume ml / @p.AlcoholContent %</p>
+                    <form method="post" action="/Store/AddToCart">
+                        <!-- hidden field for the selected product Id-->
+                        <input type="hidden" id="ProductId" name="ProductId" value="@p.Id" />
+                        <div class="form-group">
+                            <label class="control-label" for="Quantity">Quantity: </label>
+                            <input name="Quantity" id="Quantity" required min="1" max="99999" type="number" class="input-small" />
+                        </div>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</section>
