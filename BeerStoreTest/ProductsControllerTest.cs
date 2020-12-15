@@ -76,7 +76,6 @@ namespace BeerStoreTest
             CollectionAssert.AreEqual(products.OrderBy(p => p.ProductName).ToList(), model);
         }
 
-        //Delete Test Methods Questions 7 and 8
 
         // Question 7
         [TestMethod]
