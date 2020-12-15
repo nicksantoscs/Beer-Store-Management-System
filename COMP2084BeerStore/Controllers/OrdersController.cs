@@ -147,6 +147,10 @@ namespace COMP2084BeerStore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> {
+
+        }
+
         private bool OrderExists(int id)
         {
             return _context.Orders.Any(e => e.Id == id);
